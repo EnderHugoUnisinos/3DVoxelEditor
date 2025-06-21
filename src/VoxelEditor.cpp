@@ -198,7 +198,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         cout << "Grid resetada!" << endl;
     }
 
-    // Move a selsção
+    // Move a seleção
     if (key == GLFW_KEY_RIGHT && action == GLFW_PRESS) {
         if (selecaoX + 1 < TAM) {
             grid[selecaoY][selecaoX][selecaoZ].selecionado = false;
@@ -246,6 +246,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 // Processa as teclas pressionadas para movimentar a câmera no espaço 3D
 void processInput(GLFWwindow* window) {
     float cameraSpeed = 5.0f * deltaTime;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
+        cameraSpeed *= 5;
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
@@ -600,8 +602,8 @@ int main() {
         for (int x = 0; x < TAM; x++) {
             for (int y = 0; y < TAM; y++) {
                 for (int z = 0; z < TAM; z++) {
-                    if (grid[y][x][z].selecionado) {
-                        glBindTexture(GL_TEXTURE_2D, texIDList[8]);
+                    if (grid[y][x][z].visivel) {
+                        glBindTexture(GL_TEXTURE_2D, texIDList[grid[y][x][z].texID]);
                         transformaObjeto(
                             grid[y][x][z].pos.x, 
                             grid[y][x][z].pos.y, 
@@ -613,16 +615,22 @@ int main() {
                         );
                         glDrawArrays(GL_TRIANGLES, 0, 36);
                     }
-                    else if (grid[y][x][z].visivel) {
-                        glBindTexture(GL_TEXTURE_2D, texIDList[grid[y][x][z].texID]);
+                }
+            }
+        }
+        for (int x = 0; x < TAM; x++) {
+            for (int y = 0; y < TAM; y++) {
+                for (int z = 0; z < TAM; z++) {
+                    if (grid[y][x][z].selecionado) {
+                        glBindTexture(GL_TEXTURE_2D, texIDList[8]);
                         transformaObjeto(
                             grid[y][x][z].pos.x, 
                             grid[y][x][z].pos.y, 
                             grid[y][x][z].pos.z,
                             0.0f, 0.0f, 0.0f,
-                            grid[y][x][z].fatorEscala,
-                            grid[y][x][z].fatorEscala,
-                            grid[y][x][z].fatorEscala
+                            grid[y][x][z].fatorEscala * 1.05f,
+                            grid[y][x][z].fatorEscala * 1.05f,
+                            grid[y][x][z].fatorEscala * 1.05f
                         );
                         glDrawArrays(GL_TRIANGLES, 0, 36);
                     }
