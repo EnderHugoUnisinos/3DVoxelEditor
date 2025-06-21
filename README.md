@@ -5,8 +5,8 @@
 
 ```plaintext
 📂 3DVoxelEditor
-├── 📄 CMakeLists.txt
-├── 📄 README.md
+├── 📄 CMakeLists.txt           # Configuração do CMake para compilar o projeto       
+├── 📄 README.md                # Este arquivo, com a documentação do repositório
 ├── 📂 assets
 │   └── 📂 block_tex
 │       ├── empty.png
@@ -14,15 +14,15 @@
 │       ├── glass.png
 │       ├── ...
 ├── 📂 bin
-├── 📂 common
+├── 📂 common                   # Código reutilizável entre os projetos
 │   └── glad.c
-├── 📂 include
-│   ├── 📂 glad
+├── 📂 include                  # Cabeçalhos e bibliotecas de terceiros
+│   ├── 📂 glad                 # Cabeçalhos da GLAD (OpenGL Loader)
 │   │   ├── glad.h
-│   │   └── 📂 KHR
+│   │   └── 📂 KHR              # Diretório com cabeçalhos da Khronos (GLAD)
 │   │       └── khrplatform.h
 │   └── stb_image.h
-└── 📂 src
+└── 📂 src                      # Código-fonte
     ├── VoxelEditor.cpp
     └── voxel_grid.dat
 ```

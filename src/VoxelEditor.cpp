@@ -180,7 +180,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         saveGrid("voxel_grid.dat");
         cout << "Grid salva!" << endl;
     }
-    if (key == GLFW_KEY_L && action == GLFW_PRESS) {
+    if (key == GLFW_KEY_L && action == GLFW_PRESS && (mode & GLFW_MOD_CONTROL)) {
         loadGrid("voxel_grid.dat");
         cout << "Grid carregada!" << endl;
     }
