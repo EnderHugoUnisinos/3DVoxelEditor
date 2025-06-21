@@ -164,7 +164,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
     if (key == GLFW_KEY_DELETE && action == GLFW_PRESS) {
         grid[selecaoY][selecaoX][selecaoZ].visivel = false;
     }
-    if (key == GLFW_KEY_V && action == GLFW_PRESS) {
+    if ((key == GLFW_KEY_V || key == GLFW_KEY_ENTER) && action == GLFW_PRESS) {
         grid[selecaoY][selecaoX][selecaoZ].visivel = true;
     }
 
@@ -174,7 +174,17 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         texID = (texID + 1) % (NUM_TEXTURES - 1); // Skip selection texture
         cout << "Textura alterada para: " << textureNames[texID] << endl;
     }
-
+    else if (action == GLFW_PRESS && key >= GLFW_KEY_1 && key <= GLFW_KEY_9) {
+        int num = key - GLFW_KEY_1; // Converte para índice 0-8
+        if (num < NUM_TEXTURES - 1) { // Verifica se o índice é válido
+            int& texID = grid[selecaoY][selecaoX][selecaoZ].texID;
+            texID = num;
+            cout << "Textura alterada para: " << textureNames[texID] << endl;
+        }
+        else {
+            cout << "Erro: Textura " << num + 1 << " indisponível (max: " << NUM_TEXTURES - 1 << ")" << endl;
+        }
+    }
     // Salva e carrega a grid
     if (key == GLFW_KEY_S && action == GLFW_PRESS && (mode & GLFW_MOD_CONTROL)) {
         saveGrid("voxel_grid.dat");
