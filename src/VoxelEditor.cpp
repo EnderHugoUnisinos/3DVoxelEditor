@@ -514,7 +514,7 @@ void printInstructions() {
     cout << "V: Colocar voxel" << endl;
     cout << "Delete: Apagar/Esconder voxel" << endl;
     cout << "Ctrl + S: Salvar grid" << endl;
-    cout << "L: Carregar grid" << endl;
+    cout << "Ctrl + L: Carregar grid" << endl;
     cout << "R: Resetar grid" << endl;
     cout << "ESC: Sair" << endl;
 }
