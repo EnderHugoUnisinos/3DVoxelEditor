@@ -269,6 +269,10 @@ void processInput(GLFWwindow* window) {
         cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+        cameraPos += cameraUp * cameraSpeed;
+    if (glfwGetKey(window, GLFW_KEY_LEFT_ALT) == GLFW_PRESS)
+        cameraPos -= cameraUp * cameraSpeed;
 }
 
 // Define a matriz de visualização usando a posição e direção da câmera
@@ -517,11 +521,15 @@ void renderUI() {
 void printInstructions() {
     cout << "=== Controles ===" << endl;
     cout << "WASD: Mover camera" << endl;
+    cout << "SHIFT: Aumentar velocidade da camera" << endl;
+    cout << "Espaço: Mover a camera para cima" << endl;
+    cout << "Alt: Mover a camera para baixo" << endl;
     cout << "Mouse: Olhar em volta" << endl;
     cout << "Scroll: Zoom" << endl;
     cout << "Setas: Mover selecao em X/Y" << endl;
     cout << "Page Up/Down: Mover selecao em Z" << endl;
     cout << "T: Mudar textura" << endl;
+    cout << "[1 - 9]: Mudar para textura especifica" << endl;
     cout << "V: Colocar voxel" << endl;
     cout << "Delete: Apagar/Esconder voxel" << endl;
     cout << "Ctrl + S: Salvar grid" << endl;
