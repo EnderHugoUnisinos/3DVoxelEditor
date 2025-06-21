@@ -174,9 +174,10 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
         texID = (texID + 1) % (NUM_TEXTURES - 1); // Skip selection texture
         cout << "Textura alterada para: " << textureNames[texID] << endl;
     }
+    // (Altera diretamente por numero)
     else if (action == GLFW_PRESS && key >= GLFW_KEY_1 && key <= GLFW_KEY_9) {
-        int num = key - GLFW_KEY_1; // Converte para índice 0-8
-        if (num < NUM_TEXTURES - 1) { // Verifica se o índice é válido
+        int num = key - GLFW_KEY_1; 
+        if (num < NUM_TEXTURES - 1) { 
             int& texID = grid[selecaoY][selecaoX][selecaoZ].texID;
             texID = num;
             cout << "Textura alterada para: " << textureNames[texID] << endl;
