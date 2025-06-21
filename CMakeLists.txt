@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11...4.0)
-project(FCG2025-1)
+project(VoxelEditor)
 
 # Define o padrão do C++
 set(CMAKE_CXX_STANDARD 17)
@@ -47,15 +47,7 @@ include_directories(${stb_image_SOURCE_DIR})
 
 # Lista de exemplos/exercícios podem ser colocados aqui também
 set(EXERCISES
-    Lista1/Ex6,
-    Lista1/Ex7a,
-    Lista1/Ex7a,
-    Lista1/Ex7c,
-    Lista1/Ex7d,
-    Lista1/Ex8,
-    Lista1/Ex9,
-    Lista1/Ex10,
-    TbGA/Snake
+    VoxelEditor
 )
 
 add_compile_options(-Wno-pragmas)

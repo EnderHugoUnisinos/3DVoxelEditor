@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "Build Test",
+            "command": "/usr/bin/g++",
+            "args": [
+                "-Iinclude",                    
+                "-fdiagnostics-color=always",   
+                "-g",                           
+                "${file}",                
+                "common/glad.c",                
+                "-o",                           
+                "${workspaceFolder}/bin/${fileBasenameNoExtension}", 
+                "-lglfw",                       
+                "-ldl"                          
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Build the Test with glad."
+        }
+    ]
+}
